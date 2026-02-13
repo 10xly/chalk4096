@@ -11,8 +11,15 @@ const ONE = require("@positive-numbers/one")
 const THREE = require("integer-values").positiveThree
 const Null = require("qc-core").nullFn
 
-const aura = require("aura3")
-aura.isBoolean()
+const aura = {
+  and: require("es-logical-and-operator"),
+  not: require("es-logical-not-operator"),
+  or: require("es-logical-or-operator"),
+  isUndefined: require("@primitive/is-undefined").isUndefined,
+  add: require("countingup").add,
+  subtract: require("countingup").subtract
+}
+const negativeOne = require("@negative-numbers/one")
 const equal = require("@10xly/strict-equals")
 const slice = require("string-slice")
 const substr = require("string.prototype.substr")
@@ -35,7 +42,7 @@ const join = require("array.prototype.join")
 
 const plus = require("random-package")
 
-let [_true, _false] = require("aura3/private/arrayOfAllBooleans").map(
+let [_true, _false] = require("lolite.__private.arrayofallbooleans").map(
   (bool) => {
     return require("const")(bool)
   }
@@ -76,7 +83,7 @@ function stringEncaseCRLFWithFirstIndex(string, prefix, postfix, index) {
     )
     endIndex = aura.add(index, ONE)
     index = indexOf(string, "\n", endIndex)
-  } while (aura.not(equal(index, negativeOne))) // negativeOne is globally defined externally
+  } while (aura.not(equal(index, negativeOne)))
 
   returnValue = concat(returnValue, slice(string, endIndex))
   return returnValue
